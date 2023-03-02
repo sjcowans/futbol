@@ -97,7 +97,6 @@ class LeagueStats < Classes
     end
     away_games_hash
   end
-  ################################################
   
   def highest_scoring_home_team
     goals = home_goals_per_team
@@ -115,6 +114,7 @@ class LeagueStats < Classes
     highest_scoring = highest_avg.min_by {|k,v| v}
     id_string = highest_scoring[0]
     convert_id_to_teamname(id_string)
+  end
 
   def highest_scoring_away_team
     scores = Hash.new(0)
@@ -128,27 +128,21 @@ class LeagueStats < Classes
     convert_id_to_teamname(numer[0])
   end
 
-  def lowest_scoring_away
-    scores = Hash.new(0)
-    @games.each do |game|
-      scores[(game.away)] += (game.away_goals).to_i
-      scores.min_by{|k,v| v}[0]
-      end
-    numer = scores.min_by{|k, v| v}
-    denom = away_games_per_team.min_by{|k, v| v}
-    lowest_avg = numer[1].fdiv(denom[1])
-    convert_id_to_teamname(numer[0])
+  def lowest_scoring_home_team
+    goals = home_goals_per_team
+    games = home_games_per_team
+    lowest_avg = goals.merge(games){|team_id, games, goals| goals.fdiv(games)}
+    lowest_scoring = lowest_avg.max_by {|k,v| v}
+    id_string = lowest_scoring[0]
+    convert_id_to_teamname(id_string)
   end
 
-  def lowest_scoring_home
-    scores = Hash.new(0)
-    @games.each do |game|
-      scores[(game.away)] += (game.away_goals).to_i
-      scores.min_by{|k,v| v}[0]
-      end
-    numer = scores.min_by{|k, v| v}
-    denom = home_games_per_team.min_by{|k, v| v}
-    lowest_avg = numer[1].fdiv(denom[1])
-    convert_id_to_teamname(numer[0])
+  def lowest_scoring_away_team
+    goals = home_goals_per_team
+    games = home_games_per_team
+    lowest_avg = goals.merge(games){|team_id, games, goals| goals.fdiv(games)}
+    lowest_scoring = lowest_avg.max_by {|k,v| v}
+    id_string = lowest_scoring[0]
+    convert_id_to_teamname(id_string)
   end
 end
