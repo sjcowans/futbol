@@ -145,4 +145,5 @@ class LeagueStats < Classes
     id_string = lowest_scoring[0]
     convert_id_to_teamname(id_string)
   end
+
 end
