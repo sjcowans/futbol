@@ -92,4 +92,56 @@ class SeasonStats < Classes
     team = @teams.select{|team|team.team_id == id_string}
     team[0].teamname
   end
+
+  def total_team_tackles(team_by_year)
+    total_team_tackles_hash = Hash.new(0)
+    team_by_year.each do |team|
+      total_team_tackles_hash[team[0].team_id] += team[0].tackles
+    end
+    total_team_tackles_hash
+  end
+
+  def games_by_season(date)
+    team_by_year = {}
+    @games.each do |k , v| 
+      if k.season == date
+        @game_teams.each do |k2, v2|
+          if k2.game_id == k.id
+            team_by_year[k2] = v2
+          end
+        end
+      end
+    end
+    team_by_year
+  end
+
+  def most_team_tackles(date)
+    team_by_year = games_by_season(date)
+    team_id = total_team_tackles(team_by_year).max_by { |k, v| v }[0]
+    team_by_year.each do |team|
+      if team[0].team_id == team_id
+        @teams.each do |k, v|
+          if k.team_id == team[0].team_id
+            team_id = k.teamname
+          end
+        end
+      end
+    end
+    team_id
+  end
+
+  def least_team_tackles(date)
+    team_by_year = games_by_season(date)
+    team_id = total_team_tackles(team_by_year).min_by { |k, v| v }[0]
+    team_by_year.each do |team|
+      if team[0].team_id == team_id
+        @teams.each do |k, v|
+          if k.team_id == team[0].team_id
+            team_id = k.teamname
+          end
+        end
+      end
+    end
+    team_id
+  end
 end
