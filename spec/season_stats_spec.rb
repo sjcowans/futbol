@@ -20,52 +20,31 @@ describe LeagueStats do
   end
 
   xit 'can find winningest coach' do
-
     expect(stat_tracker.season_stats.winningest_coach('20132014')).to eq('Claude Julien')
     expect(stat_tracker.season_stats.winningest_coach('20142015')).to eq('Alain Vigneault')
   end
-    
-  it 'can find most accurate team' do
-  #  team1 = stat_tracker.season_stats.most_accurate_team("20132014")
-   team2 = stat_tracker.season_stats.most_accurate_team("20142015")
-  #  expect(team1).to eq "Real Salt Lake"
-   expect(team2).to eq "Toronto FC"
-  end
   
   it 'can find worst coach' do
-
-
     expect(stat_tracker.season_stats.worst_coach('20132014')).to eq('Peter Laviolette')
     expect(stat_tracker.season_stats.worst_coach('20142015')).to eq('Craig MacTavish').or(eq('Ted Nolan'))
   end
 
-  it 'can find least accurate team' do
-    # team1 = stat_tracker.season_stats.most_accurate_team("20132014")
-    team2 = stat_tracker.season_stats.least_accurate_team("20142015")
-    # expect(team1).to eq "New York City FC"
-    expect(team2).to eq "Columbus Crew SC"
-  end
-
   it 'can find most accurate team' do
-
-    expect(stat_tracker.season_stats.most_accurate_team('20132014')).to eq('Real Salt Lake')
-    expect(stat_tracker.season_stats.most_accurate_team('20142015')).to eq('Toronto FC')
+    expect(stat_tracker.season_stats.most_accurate_team('20132014')).to eq('Real Salt Lake') #24
+    expect(stat_tracker.season_stats.most_accurate_team('20142015')).to eq('Toronto FC') #20
   end
 
   it 'can find least accurate team' do
-
-    expect(stat_tracker.season_stats.least_accurate_team('20132014')).to eq('New York City FC')
-    expect(stat_tracker.season_stats.least_accurate_team('20142015')).to eq('Columbus Crew SC')
+    expect(stat_tracker.season_stats.least_accurate_team('20132014')).to eq('New York City FC') #9
+    expect(stat_tracker.season_stats.least_accurate_team('20142015')).to eq('Columbus Crew SC') #53
   end
 
   it 'can list most tackles' do
-
     expect(stat_tracker.season_stats.most_team_tackles('20132014')).to eq('FC Cincinnati')
     expect(stat_tracker.season_stats.most_team_tackles('20142015')).to eq("Seattle Sounders FC")
   end
 
   it 'can list least tackles' do
-
     expect(stat_tracker.season_stats.least_team_tackles('20132014')).to eq('Atlanta United')
     expect(stat_tracker.season_stats.least_team_tackles('20142015')).to eq('Orlando City SC')
   end
