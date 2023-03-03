@@ -6,7 +6,7 @@ Starter repository for the [Turing School](https://turing.io/) Futbol project.
 # Contributors
 
 Brandon Johnson
-https://github.com/johnsonbw2010
+https://github.com/brenicillin
 https://www.linkedin.com/in/brandon-j-94b740b2/
 
 Young Heon Koh
