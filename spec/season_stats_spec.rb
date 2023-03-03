@@ -19,7 +19,7 @@ describe LeagueStats do
     expect(stat_tracker.season_stats.game_teams[0].game_id).to eq(2012030221)
   end
 
-  xit 'can find winningest coach' do
+  it 'can find winningest coach' do
     expect(stat_tracker.season_stats.winningest_coach('20132014')).to eq('Claude Julien')
     expect(stat_tracker.season_stats.winningest_coach('20142015')).to eq('Alain Vigneault')
   end
