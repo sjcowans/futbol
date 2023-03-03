@@ -139,4 +139,66 @@ class SeasonStats < Classes
     team_id = array.last[0]
     convert_id_to_teamname(team_id)
   end
+
+  def winningest_coach(season_string)
+    valid_game_ids = []
+    @games.each do |game|
+      if game.season == season_string
+        valid_game_ids << game.id
+      end
+    end
+    win_hash = {}
+    @game_teams.each do |game|
+      if valid_game_ids.include?(game.game_id)
+          win_hash[game.head_coach] = {:wins => 0 , :games => 0}
+      end
+    end
+    @game_teams.each do |game|
+      if valid_game_ids.include?(game.game_id)
+        win_hash[game.head_coach][:games] += 1
+          if game.result == "WIN"
+            win_hash[game.head_coach][:wins] += 1
+        end
+      end
+    end
+    win_hash
+    ratio_hash = Hash.new()
+    win_hash.each do |key,value|
+      ratio_hash[key] = (value[:wins]).fdiv(value[:games])
+    end
+    winning_coach = ratio_hash.sort_by{|k,v| v}.last[0]
+    winning_coach
+    # require 'pry'; binding.pry
+  end
+
+  def worst_coach(season_string)
+    valid_game_ids = []
+    @games.each do |game|
+      if game.season == season_string
+        valid_game_ids << game.id
+      end
+    end
+    win_hash = {}
+    @game_teams.each do |game|
+      if valid_game_ids.include?(game.game_id)
+          win_hash[game.head_coach] = {:wins => 0 , :games => 0}
+      end
+    end
+    @game_teams.each do |game|
+      if valid_game_ids.include?(game.game_id)
+        win_hash[game.head_coach][:games] += 1
+          if game.result == "WIN"
+            win_hash[game.head_coach][:wins] += 1
+        end
+      end
+    end
+    win_hash
+    ratio_hash = Hash.new()
+    win_hash.each do |key,value|
+      ratio_hash[key] = (value[:wins]).fdiv(value[:games])
+    end
+    losing_coach = ratio_hash.sort_by{|k,v| v}.first[0]
+    losing_coach
+    # require 'pry'; binding.pry
+  end
 end
