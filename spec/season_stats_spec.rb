@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'csv'
 
-describe LeagueStats do
+describe SeasonStats do
   let(:game_path) { './data/games.csv' }
   let(:team_path) { './data/teams.csv' }
   let(:game_teams_path) { './data/game_teams.csv' }
@@ -12,8 +12,6 @@ describe LeagueStats do
           }
   end
   let(:stat_tracker) { StatTracker.from_csv(locations) }
-  
-  let(:season_stats) { SeasonStats.new(locations) }
 
   it 'can import team data' do
     expect(stat_tracker.season_stats.game_teams[0].game_id).to eq(2012030221)
@@ -28,6 +26,7 @@ describe LeagueStats do
     expect(stat_tracker.season_stats.find_season_games('20132014')).to be_a(Array)
     expect(stat_tracker.season_stats.create_coach_season_record('20132014')).to be_a(Hash)
     expect(stat_tracker.season_stats.create_coach_season_record('20132014')).to be_a(Hash)
+
     expect(stat_tracker.season_stats.winningest_coach('20132014')).to eq('Claude Julien')
     expect(stat_tracker.season_stats.winningest_coach('20142015')).to eq('Alain Vigneault')
     expect(stat_tracker.season_stats.worst_coach('20132014')).to eq('Peter Laviolette')

@@ -22,5 +22,11 @@ game = Game.new(data)
      expect(game.season).to eq("101102")
      expect(game.type).to eq("Postseason")
      expect(game.date_time).to eq("10/17/2022")
+     expect(game.away).to eq("6")
+     expect(game.home).to eq("20")
+     expect(game.away_goals).to eq(199)
+     expect(game.home_goals).to eq(1)
+     expect(game.venue).to eq("Gibraltar")
+     expect(game.venue_link).to eq("rockOf")
   end
 end

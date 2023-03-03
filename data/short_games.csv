@@ -13,3 +13,4 @@ game_id,season,type,date_time,away_team_id,home_team_id,away_goals,home_goals,ve
 2013020438,20132014,Regular Season,12/8/13,5,6,2,3,Toyota Stadium,/api/v1/venues/null
 2013020355,20132014,Regular Season,11/26/13,5,6,3,2,Toyota Stadium,/api/v1/venues/null
 2012020654,20122013,Regular Season,4/20/13,5,6,3,2,Toyota Stadium,/api/v1/venues/null
+2015030142,20152016,Postseason,4/16/16,3,5,2,2,Children's Mercy Park,/api/v1/venues/null

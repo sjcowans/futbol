@@ -27,3 +27,5 @@ game_id,team_id,HoA,result,settled_in,head_coach,goals,shots,tackles,pim,powerPl
 2013020355,6,home,LOSS,OT,Claude Julien,2,6,28,2,1,1,50.8,11,12
 2012020654,5,away,WIN,REG,Dan Bylsma,3,6,30,20,6,2,40.3,8,6
 2012020654,6,home,LOSS,REG,Claude Julien,2,10,35,24,4,1,59.7,6,4
+2015030142,3,away,TIE,REG,Alain Vigneault,2,7,57,19,3,0,44.3,3,3
+2015030142,5,home,TIE,REG,Mike Sullivan,2,7,25,15,5,2,55.7,10,2
