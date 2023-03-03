@@ -118,28 +118,4 @@ class GameStats < Classes
     end
     games_per_season
   end
-
-
-  def highest_home_avg_score
-    scores = Hash.new(0)
-    @games.each do |game|
-      scores[(game.home)] += (game.home_goals).to_i
-      scores.max_by{|k,v| v}[0]
-    end
-  end
-
-  def highest_away_avg_score
-    scores = Hash.new(0)
-    @games.each do |game|
-      scores[(game.away)] += (game.away_goals).to_i
-      scores.max_by{|k,v| v}[0]
-    end
-  end
-
-  def team_goals
-    @games.each do |game|
-      @away_scores[game.away] += game.away_goals.to_i
-      @home_scores[game.home] += game.home_goals.to_i
-    end
-  end
 end
