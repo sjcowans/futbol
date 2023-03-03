@@ -105,6 +105,7 @@ let(:stat_tracker) { StatTracker.from_csv(locations) }
     expect(stat_tracker.league_stats.count_of_teams).to eq(32)
   end
 
+
   it 'can list #best_offense' do
     expect(stat_tracker.league_stats.best_offense).to eq("FC Dallas")
   end
@@ -142,6 +143,7 @@ let(:stat_tracker) { StatTracker.from_csv(locations) }
     expect(stat_tracker.league_stats.home_goals_per_team).to eq({"3" => 3,
                                                                  "5" => 3,
                                                                  "6" => 23})
+
   end
 
   it 'can list #away_goals_per_team' do
@@ -307,5 +309,4 @@ let(:stat_tracker) { StatTracker.from_csv(locations) }
     expect(stat_tracker.season_stats.winningest_coach("20132014")).to eq("Claude Julien")
     expect(stat_tracker.season_stats.winningest_coach("20152016")).to eq("Mike Sullivan")
   end
-
 end
