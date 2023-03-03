@@ -137,9 +137,9 @@ class LeagueStats < Classes
     convert_id_to_teamname(id_string)
   end
 
-  def lowest_scoring_away_team
-    goals = home_goals_per_team
-    games = home_games_per_team
+  def lowest_scoring_visitor
+    goals = away_goals_per_team
+    games = away_games_per_team
     lowest_avg = goals.merge(games){|team_id, games, goals| goals.fdiv(games)}
     lowest_scoring = lowest_avg.max_by {|k,v| v}
     id_string = lowest_scoring[0]

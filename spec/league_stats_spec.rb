@@ -25,8 +25,8 @@ describe LeagueStats do
 
   it 'can store team total goals' do
 
-    expect(stat_tracker.league_stats.lowest_scoring_home).to eq("Reign FC")
-    expect(stat_tracker.league_stats.lowest_scoring_away).to eq("Reign FC")
+    expect(stat_tracker.league_stats.lowest_scoring_home_team).to eq("Utah Royals FC")
+    expect(stat_tracker.league_stats.lowest_scoring_visitor).to eq("San Jose Earthquakes")
   end
 
   it 'can return team with best offense' do
