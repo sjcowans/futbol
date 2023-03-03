@@ -53,7 +53,7 @@ let(:stat_tracker) { StatTracker.from_csv(locations) }
   end
 
   it 'can list #percentage_ties' do
-    expect(stat_tracker.game_stats.percentage_ties).to eq(0.0)
+    expect(stat_tracker.game_stats.percentage_ties).to eq(0.07)
   end
 
   it 'can list #total_scores' do
@@ -182,7 +182,130 @@ let(:stat_tracker) { StatTracker.from_csv(locations) }
     expect(stat_tracker.league_stats.lowest_scoring_visitor).to eq("Sporting Kansas City")
   end
 
-  it 'can list total_team_tackles' do
-    
+  it 'can list #games_by_season' do
+    season1 = stat_tracker.season_stats.games_by_season("20132014")
+    season2 = stat_tracker.season_stats.games_by_season("20142015")
+    season3 = stat_tracker.season_stats.games_by_season("20152016")
+
+    expect(season1).to be_instance_of(Hash)
+    expect(season1.length).to eq(6)
+
+    expect(season2).to be_instance_of(Hash)
+    expect(season2.length).to eq(0)
+
+    expect(season3).to be_instance_of(Hash)
+    expect(season3.length).to eq(2)
   end
+
+  it 'can list #total_team_tackles' do
+    season1 = stat_tracker.season_stats.games_by_season("20132014")
+    season3 = stat_tracker.season_stats.games_by_season("20152016")
+
+    expect(stat_tracker.season_stats.total_team_tackles(season1)).to eq({"3" => 33,
+                                                                         "5" => 71,
+                                                                         "6" => 85,})
+
+    expect(stat_tracker.season_stats.total_team_tackles(season3)).to eq({"3" => 57,
+                                                                         "5" => 25,})
+  end
+
+  it 'can list #most_team_tackles' do
+    expect(stat_tracker.season_stats.most_team_tackles("20122013")).to eq("FC Dallas")
+    expect(stat_tracker.season_stats.most_team_tackles("20132014")).to eq("FC Dallas")
+    expect(stat_tracker.season_stats.most_team_tackles("20152016")).to eq("Houston Dynamo")
+  end
+
+  it 'can list #least_team_tackles' do
+    expect(stat_tracker.season_stats.least_team_tackles("20122013")).to eq("Houston Dynamo")
+    expect(stat_tracker.season_stats.least_team_tackles("20132014")).to eq("Houston Dynamo")
+    expect(stat_tracker.season_stats.least_team_tackles("20152016")).to eq("Sporting Kansas City")
+  end
+
+  it 'can #gather_goals_info' do
+    expect(stat_tracker.season_stats.gather_goals_info("20122013")).to eq({"3" => 8,
+                                                                           "5" => 5,
+                                                                           "6" => 26})
+    expect(stat_tracker.season_stats.gather_goals_info("20132014")).to eq({"3" => 2,
+                                                                           "5" => 5,
+                                                                           "6" => 8,})
+    expect(stat_tracker.season_stats.gather_goals_info("20152016")).to eq({"3" => 2,
+                                                                           "5" => 2,})
+  end
+
+  it 'can #gather_shots_info' do
+    expect(stat_tracker.season_stats.gather_shots_info("20122013")).to eq({"3" => 38,
+                                                                           "5" => 38,
+                                                                           "6" => 86,})
+    expect(stat_tracker.season_stats.gather_shots_info("20132014")).to eq({"3" => 4,
+                                                                           "5" => 14,
+                                                                           "6" => 18,})
+    expect(stat_tracker.season_stats.gather_shots_info("20152016")).to eq({"3" => 7,
+                                                                           "5" => 7,})
+  end
+
+  it 'can #sort_by_accuracy' do
+    expect(stat_tracker.season_stats.sort_by_accuracy("20122013")).to eq([["6", 3.308], ["3", 4.75], ["5", 7.6]])
+    expect(stat_tracker.season_stats.sort_by_accuracy("20132014")).to eq([["3", 2.0], ["6", 2.25], ["5", 2.8]])
+    expect(stat_tracker.season_stats.sort_by_accuracy("20152016")).to eq([["3", 3.5], ["5", 3.5]])
+  end
+
+  it 'can list #most_accurate_team' do
+    expect(stat_tracker.season_stats.most_accurate_team("20122013")).to eq("FC Dallas")
+    expect(stat_tracker.season_stats.most_accurate_team("20132014")).to eq("Houston Dynamo")
+    expect(stat_tracker.season_stats.most_accurate_team("20152016")).to eq("Houston Dynamo")
+  end
+
+  it 'can list #least_accurate_team' do
+    expect(stat_tracker.season_stats.least_accurate_team("20122013")).to eq("Sporting Kansas City")
+    expect(stat_tracker.season_stats.least_accurate_team("20132014")).to eq("Sporting Kansas City")
+    expect(stat_tracker.season_stats.least_accurate_team("20152016")).to eq("Sporting Kansas City")
+  end
+
+  it 'can #find_season_games' do
+    expect(stat_tracker.season_stats.find_season_games("20122013")).to be_instance_of(Array)
+    expect(stat_tracker.season_stats.find_season_games("20122013").length).to eq(10)
+
+    expect(stat_tracker.season_stats.find_season_games("20132014")).to be_instance_of(Array)
+    expect(stat_tracker.season_stats.find_season_games("20132014").length).to eq(3)
+
+    expect(stat_tracker.season_stats.find_season_games("20152016")).to be_instance_of(Array)
+    expect(stat_tracker.season_stats.find_season_games("20152016").length).to eq(1)
+  end
+
+  it 'can #create_coach_season_record' do
+    expect(stat_tracker.season_stats.create_coach_season_record("20122013")).to eq({"Claude Julien" => {:games=>0, :wins=>0},
+                                                                                    "Dan Bylsma" => {:games=>0, :wins=>0},
+                                                                                    "John Tortorella" => {:games=>0, :wins=>0},})
+
+    expect(stat_tracker.season_stats.create_coach_season_record("20132014")).to eq({"Alain Vigneault" => {:games=>0, :wins=>0},
+                                                                                    "Claude Julien" => {:games=>0, :wins=>0},
+                                                                                    "Dan Bylsma" => {:games=>0, :wins=>0},})
+
+    expect(stat_tracker.season_stats.create_coach_season_record("20152016")).to eq({"Alain Vigneault" => {:games=>0, :wins=>0},
+                                                                                    "Mike Sullivan" => {:games=>0, :wins=>0},})
+  end
+
+  it 'can list #coach_win_loss_record' do
+    expect(stat_tracker.season_stats.coach_win_loss_record("20122013")).to eq({"Claude Julien" => {:games=>10, :wins=>9},
+                                                                               "Dan Bylsma" => {:games=>5, :wins=>1},
+                                                                               "John Tortorella" => {:games=>5, :wins=>0}})
+    expect(stat_tracker.season_stats.coach_win_loss_record("20132014")).to eq({"Alain Vigneault" => {:games=>1, :wins=>0},
+                                                                               "Claude Julien" => {:games=>3, :wins=>2},
+                                                                               "Dan Bylsma" => {:games=>2, :wins=>1},})
+    expect(stat_tracker.season_stats.coach_win_loss_record("20152016")).to eq({"Alain Vigneault" => {:games=>1, :wins=>0},
+                                                                               "Mike Sullivan" => {:games=>1, :wins=>0},})
+  end
+
+  it 'can list #worst_coach' do
+    expect(stat_tracker.season_stats.worst_coach("20122013")).to eq("John Tortorella")
+    expect(stat_tracker.season_stats.worst_coach("20132014")).to eq("Alain Vigneault")
+    expect(stat_tracker.season_stats.worst_coach("20152016")).to eq("Alain Vigneault")
+  end
+
+  it 'can list #winningest_coach' do
+    expect(stat_tracker.season_stats.winningest_coach("20122013")).to eq("Claude Julien")
+    expect(stat_tracker.season_stats.winningest_coach("20132014")).to eq("Claude Julien")
+    expect(stat_tracker.season_stats.winningest_coach("20152016")).to eq("Mike Sullivan")
+  end
+
 end
