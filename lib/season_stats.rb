@@ -5,14 +5,6 @@ class SeasonStats < Classes
   def initialize(locations)
     super
   end
-  
-  def total_team_tackles
-    total_team_tackles_hash = Hash.new(0)
-    @game_teams.each do |team|
-      total_team_tackles_hash[team.team_id] += team.tackles
-    end
-    total_team_tackles_hash
-  end
 
   def most_team_tackles
     team_id = total_team_tackles.max_by { |k, v| v }[0]

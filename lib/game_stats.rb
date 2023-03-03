@@ -1,4 +1,4 @@
-require_relative './classes'
+require_relative 'classes'
 
 class GameStats < Classes
   

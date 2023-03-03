@@ -17,24 +17,20 @@ describe GameStats do
 
   it 'can import game data' do
   
-  expect(stat_tracker.game_stats.games[0].id).to eq(2012030221)
+    expect(stat_tracker.game_stats.games[0].id).to eq(2012030221)
   end
 
   it 'can list wins_losses' do
 
-  expect(stat_tracker.game_stats.total_games).to eq(7441)
-  expect(stat_tracker.game_stats.percentage_home_wins).to eq(0.44)
-  expect(stat_tracker.game_stats.percentage_visitor_wins).to eq(0.36)
-  expect(stat_tracker.game_stats.percentage_ties).to eq(0.2)
+    expect(stat_tracker.game_stats.total_games).to eq(7441)
+    expect(stat_tracker.game_stats.percentage_home_wins).to eq(0.44)
+    expect(stat_tracker.game_stats.percentage_visitor_wins).to eq(0.36)
+    expect(stat_tracker.game_stats.percentage_ties).to eq(0.2)
   end
 
-  it 'can return highest score' do
+  it 'can return highest + lowest score' do
     
     expect(stat_tracker.game_stats.highest_total_score).to eq(11)
-  end
-
-  it 'can return lowest score' do
-
     expect(stat_tracker.game_stats.lowest_total_score).to eq(0)
   end
 
