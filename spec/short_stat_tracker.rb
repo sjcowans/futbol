@@ -60,22 +60,28 @@ let(:stat_tracker) { StatTracker.from_csv(locations) }
   it '#count_of_teams' do
     expect(stat_tracker.league_stats.count_of_teams).to eq(32)
   end
+
   it '#best_offense' do
     expect(stat_tracker.league_stats.best_offense).to eq("FC Dallas")
   end
+
   it '#worst_offense' do
     expect(stat_tracker.league_stats.worst_offense).to eq("Sporting Kansas City")
   end
+
   it '#highest_scoring_visitor' do
     expect(stat_tracker.league_stats.highest_scoring_visitor).to eq("FC Dallas")
   end
   it '#highest_scoring_home_team' do
     expect(stat_tracker.league_stats.highest_scoring_home_team).to eq("FC Dallas")
   end
+
   it '#lowest_scoring_visitor' do
     # expect(stat_tracker.league_stats.lowest_scoring_away).to eq("Sporting Kansas City")
   end
+
   it '#lowest_scoring_home_team' do
     # expect(stat_tracker.league_stats.lowest_scoring_home).to eq("Sporting Kansas City")
   end
+  
 end
