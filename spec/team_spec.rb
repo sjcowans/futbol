@@ -20,6 +20,6 @@ team = Team.new(data)
      expect(team.teamname).to eq("Atlanta United")
      expect(team.abbreviation).to eq("ATL")
      expect(team.stadium).to eq("Mercedes-Benz Stadium")
-     expect(team.link).to eq("/api/v1/teams/1")    
+     expect(team.link).to eq("/api/v1/teams/1") 
   end
 end

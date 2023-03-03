@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'csv'
 
-describe LeagueStats do
+describe SeasonStats do
   let(:game_path) { './data/games.csv' }
   let(:team_path) { './data/teams.csv' }
   let(:game_teams_path) { './data/game_teams.csv' }
@@ -12,12 +12,15 @@ describe LeagueStats do
           }
   end
   let(:stat_tracker) { StatTracker.from_csv(locations) }
-  
-  let(:season_stats) { SeasonStats.new(locations) }
 
   it 'can import team data' do
     expect(stat_tracker.season_stats.game_teams[0].game_id).to eq(2012030221)
+    expect(stat_tracker.season_stats.game_teams.length).to eq(14882)
   end
+
+  # it 'can list #total_team_tackles' do
+  #   expect(stat_tracker.season_stats.total_team_tackles).to be_instance_of(Hash)
+  # end
 
   it 'can find winningest coach' do
     expect(stat_tracker.season_stats.winningest_coach('20132014')).to eq('Claude Julien')

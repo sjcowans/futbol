@@ -12,8 +12,6 @@ describe GameStats do
           }
   end
   let(:stat_tracker) { StatTracker.from_csv(locations) }
-  
-  let(:game_stats) { GameStats.new(locations) }
 
   it 'can import game data' do
   
