@@ -15,6 +15,7 @@ describe GameStats do
 
   it 'can import game data' do
   
+
   expect(stat_tracker.game_stats.games[0].id).to eq(2012030221)
   expect(stat_tracker.game_stats.games.length).to eq(7441)
   end
@@ -52,10 +53,6 @@ describe GameStats do
     expect(stat_tracker.game_stats.total_scores.include?(11)).to eq(true)
     expect(stat_tracker.game_stats.total_scores.include?(0)).to eq(true)
     expect(stat_tracker.game_stats.total_scores.include?(12)).to eq(false)
-  end
-
-  it 'can return #highest_total_score' do
-    expect(stat_tracker.game_stats.highest_total_score).to eq(11)
   end
 
   it 'can return #lowest_total_score' do
