@@ -99,4 +99,29 @@ RSpec.describe StatTracker do
       expect(@stat_tracker.fewest_tackles('20132014')).to eq('Atlanta United')
     end
   end
+
+  describe '#Team Statistics' do
+
+    it 'can return team info for a specific team id' do
+      expected = {
+        "team_id" => "18",
+        "franchise_id" => "34",
+        "team_name" => "Minnesota United FC",
+        "abbreviation" => "MIN",
+        "link" => "/api/v1/teams/18"
+      }
+
+      expect(@stat_tracker.team_info('18')).to eq(expected)
+    end
+    it 'can return best and worst season for a particular team' do
+
+      expect(@stat_tracker.best_season('6')).to eq('20132014')
+      expect(@stat_tracker.worst_season('6')).to eq('20142015')
+    end
+
+    it 'can return average win percentage for a particular team' do
+
+      expect(@stat_tracker.average_win_percentage('6')).to eq(0.49)
+    end
+  end
 end

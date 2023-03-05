@@ -17,21 +17,7 @@ class TeamStats < Classes
     "link" => info.link
   }
   end
-
-  def games_by_season(date)
-    team_by_year = {}
-    @games.each do |k , v| 
-      if k.season == date
-        @game_teams.each do |k2, v2|
-          if k2.game_id == k.id
-            team_by_year[k2] = v2
-          end
-        end
-      end
-    end
-    team_by_year
-  end
-
+  
   def best_season(team_id)
     season_wins = Hash.new(0)
     season_total_games = Hash.new(0)
