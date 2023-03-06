@@ -39,3 +39,14 @@ Include link to your initial DTR document and the date it was completed. If you 
 https://docs.google.com/document/d/1fVW08aEbsjB_rNVXmd515vlZbNgAizdAo3qsDnRg9tI/edit?usp=sharing -- UPDATED 3/2 (Used the same document, but second section is for later in the project)
 
 https://jamboard.google.com/d/1qoVS0kbFur_274BDsR43Jgb8uANr4ypZdGIdXKarDko/edit?usp=sharing -- Jamboard used for fleshing out project blueprint + Retro
+
+
+Top 3 things that went well during your project:
+1) Flexibility - The three of us did a great job of rebounding after a major refactor
+2) Communication - We had a near constant stream of communication during work time, consistently discussing changes being made & plans moving forward
+3) Collaboration - We also did a great job of teaching and learning from each other, offering insight when another was stuck and working together to push forward.
+
+Top 3 things that your group would do differently next time:
+1) Take more time to plan ahead and flesh out an idea of what the project will look like, planning out interactions.
+2) Read the directions thoroughly - oversights resulted in, as mentioned before, a massive overhaul early in the project that may have bene avoided if we had paid closer attention to the directions
+3)Consistency - Many of our methods wound up being very similarly named, or performing nearly the same function, definitely something we will look for in the future.
