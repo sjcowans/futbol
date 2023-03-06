@@ -123,5 +123,65 @@ RSpec.describe StatTracker do
 
       expect(@stat_tracker.average_win_percentage('6')).to eq(0.49)
     end
+
+    it 'can return fewest and most goals for a specific team' do
+
+      expect(@stat_tracker.most_goals_scored('18')).to eq(7)
+      expect(@stat_tracker.fewest_goals_scored('18')).to eq(0)
+    end
+
+    it 'can return a teams favorite opponent' do
+
+      expect(@stat_tracker.favorite_opponent('18')).to eq('DC United')
+    end
+
+    it 'can show a teams rival' do 
+
+      expect(@stat_tracker.rival('18')).to eq('Houston Dash').or(eq('LA Galaxy'))
+    end
+
+    it 'can show biggest blowout + worst loss for a specific team' do
+
+      expect(@stat_tracker.biggest_blowout('18')).to eq(5)
+      expect(@stat_tracker.worst_loss('18')).to eq(-4)
+    end
+
+    it 'can show head to head with each other team' do
+      expected = {
+        "Philadelphia Union"=>0.4411764705882353,
+        "Portland Thorns FC"=>0.45161290322580644,
+        "Vancouver Whitecaps FC"=>0.4375,
+        "New England Revolution"=>0.47368421052631576,
+        "Atlanta United"=>0.5,
+        "Orlando Pride"=>0.4666666666666667,
+        "New York Red Bulls"=>0.4,
+        "Montreal Impact"=>0.3333333333333333,
+        "Portland Timbers"=>0.3,
+        "Chicago Red Stars"=>0.48148148148148145,
+        "Toronto FC"=>0.3333333333333333,
+        "Los Angeles FC"=>0.44,
+        "Real Salt Lake"=>0.41935483870967744,
+        "Sporting Kansas City"=>0.25,
+        "Seattle Sounders FC"=>0.5,
+        "Utah Royals FC"=>0.6,
+        "DC United"=>0.8,
+        "Washington Spirit FC"=>0.6666666666666666,
+        "Houston Dynamo"=>0.4,
+        "North Carolina Courage"=>0.2,
+        "New York City FC"=>0.6,
+        "FC Cincinnati"=>0.3888888888888889,
+        "FC Dallas"=>0.4,
+        "Sky Blue FC"=>0.3,
+        "Orlando City SC"=>0.37037037037037035,
+        "San Jose Earthquakes"=>0.3333333333333333,
+        "LA Galaxy"=>0.2857142857142857,
+        "Columbus Crew SC"=>0.5,
+        "Chicago Fire"=>0.3,
+        "Reign FC"=>0.3333333333333333,
+        "Houston Dash"=>0.1
+      }
+
+      expect(@stat_tracker.head_to_head('18')).to eq(expected)
+    end
   end
 end

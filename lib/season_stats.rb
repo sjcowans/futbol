@@ -1,7 +1,9 @@
 require_relative 'classes'
+require_relative 'team_module'
+
 
 class SeasonStats < Classes
-
+  include SeasonTeams
   def initialize(locations)
     super
   end
@@ -57,11 +59,6 @@ class SeasonStats < Classes
     end
     team_id
   end
-
-  def convert_id_to_teamname(id_string)
-    team = @teams.select{|team|team.team_id == id_string}
-    team[0].teamname
-  end
   #Helper method for most/least accurate team   
   def gather_goals_info(season_string)
     infohash = Hash.new(0)
@@ -75,13 +72,7 @@ class SeasonStats < Classes
   end
   #Helper method for most/least accurate team
   def gather_shots_info(season_string)
-    valid_game_ids = []
-    @games.each do |game|
-      if game.season == season_string
-        valid_game_ids << game.id
-      end
-    end
-
+    valid_game_ids = find_season_games(season_string)
     infohash = Hash.new(0)
     @game_teams.each do |game|
       if valid_game_ids.include?(game.game_id)
@@ -110,16 +101,6 @@ class SeasonStats < Classes
     array = sort_by_accuracy(season_string)
     team_id = array.last[0]
     convert_id_to_teamname(team_id)
-  end
-
-  def find_season_games(season_string)
-    valid_game_ids = []
-    @games.find_all do |game|
-      if game.season == season_string
-        valid_game_ids << game.id
-      end
-    end
-    valid_game_ids
   end
 
   def create_coach_season_record(season_string)

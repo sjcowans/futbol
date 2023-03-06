@@ -42,8 +42,8 @@ describe TeamStats do
     expect(stat_tracker.team_stats.most_goals_scored("18")).to eq(7)
   end
 
-  it "can show the least goals scored for a team" do
-    expect(stat_tracker.team_stats.least_goals_scored("18")).to eq(0)
+  it "can show the fewest goals scored for a team" do
+    expect(stat_tracker.team_stats.fewest_goals_scored("18")).to eq(0)
   end
 
   it "can show favorite_opponent" do
@@ -63,37 +63,37 @@ describe TeamStats do
   end
 
   it 'can show head to head' do
-    expect(stat_tracker.team_stats.head_to_head("18")).to eq({"19"=>0.4411764705882353,
-                                                              "52"=>0.45161290322580644,
-                                                              "21"=>0.4375,
-                                                              "16"=>0.47368421052631576,
-                                                              "1"=>0.5,
-                                                              "29"=>0.4666666666666667,
-                                                              "8"=>0.4,
-                                                              "23"=>0.3333333333333333,
-                                                              "15"=>0.3,
-                                                              "25"=>0.48148148148148145,
-                                                              "20"=>0.3333333333333333,
-                                                              "28"=>0.44,
-                                                              "24"=>0.41935483870967744,
-                                                              "5"=>0.25,
-                                                              "2"=>0.5,
-                                                              "7"=>0.6,
-                                                              "14"=>0.8,
-                                                              "22"=>0.6666666666666666,
-                                                              "3"=>0.4,
-                                                              "10"=>0.2,
-                                                              "9"=>0.6,
-                                                              "26"=>0.3888888888888889,
-                                                              "6"=>0.4,
-                                                              "12"=>0.3,
-                                                              "30"=>0.37037037037037035,
-                                                              "27"=>0.3333333333333333,
-                                                              "17"=>0.2857142857142857,
-                                                              "53"=>0.5,
-                                                              "4"=>0.3,
-                                                              "54"=>0.3333333333333333,
-                                                              "13"=>0.1
+    expect(stat_tracker.team_stats.head_to_head("18")).to eq({"Philadelphia Union"=>0.4411764705882353,
+                                                              "Portland Thorns FC"=>0.45161290322580644,
+                                                              "Vancouver Whitecaps FC"=>0.4375,
+                                                              "New England Revolution"=>0.47368421052631576,
+                                                              "Atlanta United"=>0.5,
+                                                              "Orlando Pride"=>0.4666666666666667,
+                                                              "New York Red Bulls"=>0.4,
+                                                              "Montreal Impact"=>0.3333333333333333,
+                                                              "Portland Timbers"=>0.3,
+                                                              "Chicago Red Stars"=>0.48148148148148145,
+                                                              "Toronto FC"=>0.3333333333333333,
+                                                              "Los Angeles FC"=>0.44,
+                                                              "Real Salt Lake"=>0.41935483870967744,
+                                                              "Sporting Kansas City"=>0.25,
+                                                              "Seattle Sounders FC"=>0.5,
+                                                              "Utah Royals FC"=>0.6,
+                                                              "DC United"=>0.8,
+                                                              "Washington Spirit FC"=>0.6666666666666666,
+                                                              "Houston Dynamo"=>0.4,
+                                                              "North Carolina Courage"=>0.2,
+                                                              "New York City FC"=>0.6,
+                                                              "FC Cincinnati"=>0.3888888888888889,
+                                                              "FC Dallas"=>0.4,
+                                                              "Sky Blue FC"=>0.3,
+                                                              "Orlando City SC"=>0.37037037037037035,
+                                                              "San Jose Earthquakes"=>0.3333333333333333,
+                                                              "LA Galaxy"=>0.2857142857142857,
+                                                              "Columbus Crew SC"=>0.5,
+                                                              "Chicago Fire"=>0.3,
+                                                              "Reign FC"=>0.3333333333333333,
+                                                              "Houston Dash"=>0.1
                                                               })
   end
 

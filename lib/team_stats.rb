@@ -1,6 +1,8 @@
 require_relative 'classes'
+require_relative 'team_module'
 
 class TeamStats < Classes
+  include SeasonTeams
   def initialize(locations)
     super
     @seasons = ["20122013", "20132014", "20142015", "20152016", "20162017", "20172018"]
@@ -143,7 +145,7 @@ class TeamStats < Classes
     @goals_scored.sort[-1]
   end
 
-  def least_goals_scored(team_id)
+  def fewest_goals_scored(team_id)
     most_goals_scored(team_id)
     @goals_scored.sort[0]
   end
@@ -197,7 +199,10 @@ class TeamStats < Classes
 
   def head_to_head(team_id)
     favorite_opponent(team_id)
-    @win_loss_by_team
+    @win_loss_by_team.each do |k, v|
+      k = convert_id_to_teamname(k)
+    end
+    @win_loss_by_team.transform_keys{|k| convert_id_to_teamname(k)}
   end
 
   def seasonal_summary(team_id)
