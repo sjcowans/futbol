@@ -36,6 +36,6 @@ A 2-3 sentence summary describing your approach to the code design.
 
 Include link to your initial DTR document and the date it was completed. If you do additional DTRs later in the project, you should link the revised versions here as well with the date. New versions should be listed alongside older versions. Do not delete old DTRs.
 
-https://docs.google.com/document/d/1fVW08aEbsjB_rNVXmd515vlZbNgAizdAo3qsDnRg9tI/edit?usp=sharing -- UPDATED 3/2
+https://docs.google.com/document/d/1fVW08aEbsjB_rNVXmd515vlZbNgAizdAo3qsDnRg9tI/edit?usp=sharing -- UPDATED 3/2 (Used the same document, but second section is for later in the project)
 
 https://jamboard.google.com/d/1qoVS0kbFur_274BDsR43Jgb8uANr4ypZdGIdXKarDko/edit?usp=sharing -- Jamboard used for fleshing out project blueprint + Retro
