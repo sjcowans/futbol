@@ -130,4 +130,27 @@ class StatTracker
     @team_stats.average_win_percentage(team_id)
   end
 
+  def most_goals_scored(team_id)
+    @team_stats.most_goals_scored(team_id)
+  end
+
+  def least_goals_scored(team_id)
+    @team_stats.least_goals_scored(team_id)
+  end
+
+  def favorite_opponent(team_id)
+    @team_stats.favorite_opponent(team_id)
+  end
+
+  def rival(team_id)
+    @team_stats.rival(team_id)
+  end
+
+  def biggest_blowout(team_id)
+    @team_stats.biggest_blowout(team_id)
+  end
+
+  def worst_loss(team_id)
+    @team_stats.worst_loss(team_id)
+  end
 end
