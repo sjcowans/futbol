@@ -153,4 +153,12 @@ class StatTracker
   def worst_loss(team_id)
     @team_stats.worst_loss(team_id)
   end
+
+  def head_to_head(team_id)
+    @team_stats.head_to_head(team_id)
+  end
+
+  def seasonal_summary(team_id)
+    @team_stats.seasonal_summary(team_id)
+  end
 end
