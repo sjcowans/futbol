@@ -134,8 +134,8 @@ class StatTracker
     @team_stats.most_goals_scored(team_id)
   end
 
-  def least_goals_scored(team_id)
-    @team_stats.least_goals_scored(team_id)
+  def fewest_goals_scored(team_id)
+    @team_stats.fewest_goals_scored(team_id)
   end
 
   def favorite_opponent(team_id)
